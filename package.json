@@ -1,0 +1,19 @@
+{
+  "name": "ripple-e2e-tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "chrome": "npx playwright test --project=chrome",
+    "ci": "npx playwright test --grep \"@ci\" --project=chrome"
+  },
+  "keywords": [],
+  "author": "Luiz Pereira",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.36.2"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1"
+  }
+}
