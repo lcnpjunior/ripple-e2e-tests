@@ -1,19 +1,24 @@
 {
-  "name": "ripple-e2e-tests",
+  "name": "ripple",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "chrome": "npx playwright test --project=chrome",
-    "ci": "npx playwright test --grep \"@ci\" --project=chrome"
+    "headed": "npx playwright test --headed ",
+    "debug": "npx playwright test --debug",
+    "chrome": "npx playwright test --project=chrome ",
+    "firefox": "npx playwright test --project=firefox ",
+    "safari": "npx playwright test --project=safari ",
+    "mobilechrome": "npx playwright test --project=mobileChrome ",
+    "mobilesafari": "npx playwright test --project=mobileSafari"
   },
   "keywords": [],
-  "author": "Luiz Pereira",
+  "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.36.2"
-  },
-  "dependencies": {
+    "@faker-js/faker": "^8.0.2",
+    "@playwright/test": "^1.37.0",
+    "playwright": "^1.35.1",
     "dotenv": "^16.3.1"
   }
 }

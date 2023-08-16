@@ -4,23 +4,28 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const envCI = process.env.CI?.toLocaleLowerCase() == 'true' ? true : false;
+/**
+ * Read environment variables from file.
+ * https://github.com/motdotla/dotenv
+ */
+// require('dotenv').config();
 
 /**
  * @see https://playwright.dev/docs/test-configuration
  */
 module.exports = defineConfig({
+  timeout: 120000,
   testDir: './tests',
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
-  forbidOnly: !!envCI,
+  forbidOnly: false,//!!process.env.CI,
   /* Retry on CI only */
-  retries: envCI ? 2 : 0,
+  retries: process.env.CI ? 0 : 0,
   /* Opt out of parallel tests on CI. */
-  workers: envCI ? 1 : undefined,
+  workers: process.env.CI ? 3 : 0,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  reporter: [['list'], ['html']],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
@@ -34,31 +39,52 @@ module.exports = defineConfig({
   projects: [
     {
       name: 'chrome',
-      use: { 
+      use: {
         browserName: 'chromium',
-        ...devices['Desktop Chrome'], 
-        screenshot: 'on', 
+        ...devices['Desktop Chrome'],
+        isMobile: false,
+        screenshot: 'on',
       },
     },
 
-    // {
-    //   name: 'firefox',
-    //   use: { ...devices['Desktop Firefox'] },
-    // },
+    {
+      name: 'firefox',
+      use: {
+        browserName: 'firefox',
+        ...devices['Desktop Firefox'],
+        isMobile: false,
+        screenshot: 'on',
+      },
+    },
 
-    // {
-    //   name: 'webkit',
-    //   use: { ...devices['Desktop Safari'] },
-    // },
+    {
+      name: 'safari',
+      use: {
+        browserName: 'webkit',
+        ...devices['Desktop Safari'],
+        isMobile: false,
+        screenshot: 'on',
+      },
+    },
 
     /* Test against mobile viewports. */
     // {
-    //   name: 'Mobile Chrome',
-    //   use: { ...devices['Pixel 5'] },
+    //   name: 'mobileChrome',
+    //   use: { 
+    //browserName: 'chromium',  
+    //...devices['Pixel 5'],
+    //  isMobile: false,
+    //  screenshot: 'on',
+    //  },
     // },
     // {
-    //   name: 'Mobile Safari',
-    //   use: { ...devices['iPhone 12'] },
+    //   name: 'mobileSafari',
+    //   use: { 
+    //browserName: 'webkit',
+    //...devices['iPhone 12'],
+    //   isMobile: false,
+    //    screenshot: 'on',
+    // },
     // },
 
     /* Test against branded browsers. */
@@ -79,4 +105,3 @@ module.exports = defineConfig({
   //   reuseExistingServer: !process.env.CI,
   // },
 });
-
