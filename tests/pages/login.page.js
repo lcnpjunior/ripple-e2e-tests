@@ -4,13 +4,7 @@ class LoginPage {
     constructor(page) {
         this.page = page;
     }
-
-    async clickLoginLink() {
-        await this.page.click('text=Login'); 
-        const newPage = await this.page.waitForEvent('popup');
-        return new LoginPage(newPage);
-    }
-    
+   
     async login(userName='', password='') {
         await this.page.getByPlaceholder('Username').fill(userName);
         await this.page.getByPlaceholder('Password').fill(password);
