@@ -1,4 +1,4 @@
-# Ripple End to end
+# Ripple End-to-End
 
 ### Installation 
 
