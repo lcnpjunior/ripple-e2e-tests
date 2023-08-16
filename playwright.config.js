@@ -61,8 +61,7 @@ module.exports = defineConfig({
       name: 'safari',
       use: {
         browserName: 'webkit',
-        ...devices['Desktop Safari'],
-        isMobile: false,
+        ...devices['Desktop Safari'],        
         screenshot: 'on',
       },
     },
@@ -70,21 +69,19 @@ module.exports = defineConfig({
     /* Test against mobile viewports. */
     // {
     //   name: 'mobileChrome',
-    //   use: { 
-    //browserName: 'chromium',  
-    //...devices['Pixel 5'],
-    //  isMobile: false,
-    //  screenshot: 'on',
-    //  },
+    //   use: {
+    //     browserName: 'chromium',
+    //     ...devices['Pixel 5'],        
+    //     screenshot: 'on',
+    //   },
     // },
     // {
     //   name: 'mobileSafari',
-    //   use: { 
-    //browserName: 'webkit',
-    //...devices['iPhone 12'],
-    //   isMobile: false,
-    //    screenshot: 'on',
-    // },
+    //   use: {
+    //     browserName: 'webkit',
+    //     ...devices['iPhone 12'],        
+    //     screenshot: 'on',
+    //   },
     // },
 
     /* Test against branded browsers. */
