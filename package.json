@@ -9,7 +9,8 @@
     "debug": "npx playwright test --debug",
     "chrome": "npx playwright test --project=chrome",
     "firefox": "npx playwright test --project=firefox",
-    "safari": "npx playwright test --project=safari" 
+    "safari": "npx playwright test --project=safari",
+    "ci": "npx playwright test exampleCI.spec.js --project=chrome"
   },
   "keywords": [],
   "author": "Luiz Pereira",
