@@ -6,7 +6,7 @@ let page
 let homePage
 let user
 
-test.describe('Schedule Demo Flow', () => {
+test.describe('Schedule demo flow', () => {
     test.describe.configure({ mode: 'serial' });
     test.beforeAll(async ({ browser }) => {
         page = await browser.newPage();        
