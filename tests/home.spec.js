@@ -60,9 +60,8 @@ test.describe('Home validations', () => {
         await expect(page.getByRole('heading', { name: 'We Empower Your Vessels to Operate More Efficiently, Safely and Responsibly'})).toBeVisible()
     });
 
-    test.only('Validate ripple home page menu options', async () => {
+    test('Validate ripple home page menu options', async () => {
         const menu = page.locator('div[class="Box-cZshmE Flex-sc-r1kzye-0 dSKjrz isA-dXk"]')
-        await page.pause()
         expect(await menu.screenshot()).toMatchSnapshot();
     });
     
